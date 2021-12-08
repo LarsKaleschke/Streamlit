@@ -6,13 +6,13 @@ st.title('Sea ice test')
 
 DATE_COLUMN = 'Date'
 
-DATA_URL = ('https://seaice.de/nh_awi_amsr2_regional_extent_area.csv')
+DATA_URL = ('https://www.seaice.de/nh_awi_amsr2_regional_extent_area.csv')
 
 
 
 @st.cache
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
+def load_data():
+    data = pd.read_csv(DATA_URL)
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase, axis='columns', inplace=True)
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
